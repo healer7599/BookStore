@@ -1,0 +1,5 @@
+{
+  "Connections": {
+    "BusinessDB": "Server=HEALER-PC;Database=QLNhaSach;Trusted_Connection=True;"
+  }
+}
