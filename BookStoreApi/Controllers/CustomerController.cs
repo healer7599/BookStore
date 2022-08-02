@@ -11,47 +11,40 @@ namespace BookStoreApi.Controllers
     public class CustomerController : ControllerBase
     {
         /// <summary>
-        /// Lấy danh sách nhân viên
+        /// Lấy danh sách khách hàng
         /// </summary>
-        /// <param name="empID"></param>
-        /// <param name="action"></param>
+        /// <param name="searchText"></param>
         /// <returns></returns>
-        [Route("{searchText?}")]
-        [HttpGet]
+        [HttpGet("{searchText?}")]
         public async Task<IActionResult> GetCustomer(string? searchText)
         {
-            var result = new ServiceResult();
-
-            try
-            {
-                result.Data = new CustomerBL().GetCustomer(searchText ?? string.Empty);
-            }
-            catch (Exception ex)
-            {
-                result.Message = ex.Message;
-            }
+            var result = new CustomerBL().GetCustomer(searchText ?? string.Empty);
 
             return Ok(result);
         }
 
         /// <summary>
-        /// Thêm mới nhân viên
+        /// Thêm mới khách hàng
         /// </summary>
-        /// <param name="emp"></param>
+        /// <param name="cus"></param>
         /// <returns></returns>
         [HttpPost("")]
-        public async Task<IActionResult> InsertEmployee([FromBody] Customer cus)
+        public async Task<IActionResult> InsertCustomer([FromBody] Customer cus)
         {
-            var result = new ServiceResult();
+            var result = new CustomerBL().InsertCustomer(cus);
 
-            try
-            {
-                result.Data = new CustomerBL().InsertCustomer(cus);
-            }
-            catch (Exception ex)
-            {
-                result.Message = ex.Message;
-            }
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// Xoá khách hàng
+        /// </summary>
+        /// <param name="customerID"></param>
+        /// <returns></returns>
+        [HttpDelete("{customerID}")]
+        public async Task<IActionResult> DeleteCustomer(string customerID)
+        {
+            var result = new CustomerBL().DeleteCustomer(customerID);
 
             return Ok(result);
         }

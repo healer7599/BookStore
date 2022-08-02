@@ -13,23 +13,12 @@ namespace BookStoreApi.Controllers
         /// <summary>
         /// Lấy danh sách nhân viên
         /// </summary>
-        /// <param name="empID"></param>
-        /// <param name="action"></param>
+        /// <param name="searchText"></param>
         /// <returns></returns>
-        [Route("{searchText?}")]
-        [HttpGet]
+        [HttpGet("{searchText?}")]
         public async Task<IActionResult> GetEmployee(string? searchText)
         {
-            var result = new ServiceResult();
-
-            try
-            {
-                result.Data = new EmployeeBL().GetEmployee(searchText ?? string.Empty);
-            }
-            catch (Exception ex)
-            {
-                result.Message = ex.Message;
-            }
+            var result = new EmployeeBL().GetEmployee(searchText ?? string.Empty);
 
             return Ok(result);
         }
@@ -42,16 +31,20 @@ namespace BookStoreApi.Controllers
         [HttpPost("")]
         public async Task<IActionResult> InsertEmployee([FromBody] Employee emp)
         {
-            var result = new ServiceResult();
+            var result = new EmployeeBL().InsertEmployee(emp);
 
-            try
-            {
-                result.Data = new EmployeeBL().InsertEmployee(emp);
-            }
-            catch (Exception ex)
-            {
-                result.Message = ex.Message;
-            }
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// Xoá nhân viên
+        /// </summary>
+        /// <param name="employeeID"></param>
+        /// <returns></returns>
+        [HttpDelete("{employeeID}")]
+        public async Task<IActionResult> DeleteEmployee(string employeeID)
+        {
+            var result = new EmployeeBL().DeleteEmployee(employeeID);
 
             return Ok(result);
         }

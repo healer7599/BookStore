@@ -11,7 +11,7 @@ namespace BookStoreApi.Model
     {
         private string _data;
 
-        public int StatusCode { get; set; }
+        public StatusCode StatusCode { get; set; } = StatusCode.Status200;
         public string Message { get; set; }
 
         public object Data
@@ -33,5 +33,11 @@ namespace BookStoreApi.Model
                 }
             }
         }
+    }
+
+    public enum StatusCode
+    {
+        Status200 = 200,
+        Status500 = 500
     }
 }

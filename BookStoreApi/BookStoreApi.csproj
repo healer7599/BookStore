@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BookStoreBL\BookStoreBL.csproj" />
+    <ProjectReference Include="..\Entity\Entity.csproj" />
     <ProjectReference Include="..\HostBase\HostBase.csproj" />
   </ItemGroup>
 
