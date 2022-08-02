@@ -29,5 +29,15 @@ namespace BookStoreBL
         {
             return new EmployeeDL().InsertEmployee(emp);
         }
+
+        /// <summary>
+        /// Xoá nhân viên
+        /// </summary>
+        /// <param name="emp"></param>
+        /// <returns></returns>
+        public int DeleteEmployee(string employeeID)
+        {
+            return new EmployeeDL().DeleteEmployee(employeeID);
+        }
     }
 }

@@ -29,5 +29,15 @@ namespace BookStoreBL
         {
             return new CustomerDL().InsertCustomer(cus);
         }
+
+        /// <summary>
+        /// Xoá khách hàng
+        /// </summary>
+        /// <param name="customerID"></param>
+        /// <returns></returns>
+        public int DeleteCustomer(string customerID)
+        {
+            return new CustomerDL().DeleteCustomer(customerID);
+        }
     }
 }

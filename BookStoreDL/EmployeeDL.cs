@@ -36,10 +36,26 @@ namespace BookStoreDL
 
             param.Add("EmployeeID", emp.EmployeeID);
             param.Add("EmployeeName", emp.EmployeeName);
-            param.Add("UserName", emp.UserName);
+            param.Add("UserName", emp.UserName ?? string.Empty);
+            param.Add("Password", emp.Password ?? string.Empty);
+            param.Add("Position", emp.Position ?? string.Empty);
             param.Add("BookStoreID", emp.BookStoreID);
 
             return DAL.ExecuteNonQuery("dbo.Proc_InsertEmployee", param);
+        }
+
+        /// <summary>
+        /// Xoá nhân viên
+        /// </summary>
+        /// <param name="emp"></param>
+        /// <returns></returns>
+        public int DeleteEmployee(string employeeID)
+        {
+            var param = new Dictionary<string, object>();
+
+            param.Add("EmployeeID", employeeID);
+
+            return DAL.ExecuteNonQuery("dbo.Proc_DeleteEmployee", param);
         }
     }
 }

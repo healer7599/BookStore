@@ -40,5 +40,19 @@ namespace BookStoreDL
 
             return DAL.ExecuteNonQuery("dbo.Proc_InsertCustomer", param);
         }
+
+        /// <summary>
+        /// Xoá khách hàng
+        /// </summary>
+        /// <param name="customerID"></param>
+        /// <returns></returns>
+        public int DeleteCustomer(string customerID)
+        {
+            var param = new Dictionary<string, object>();
+
+            param.Add("CustomerID", customerID);
+
+            return DAL.ExecuteNonQuery("dbo.Proc_DeleteCustomer", param);
+        }
     }
 }

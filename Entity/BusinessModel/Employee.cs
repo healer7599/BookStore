@@ -44,7 +44,7 @@ namespace Entity.BusinessModel
         /// Mã nhà sách - FK
         /// </summary>
         [ForeignKey("BookStoreID")]
-        public string BookStoreID { get; set; } = Environment.GetEnvironmentVariable("MA_CN");
+        public string BookStoreID { get; set; }
 
     }
 }
